@@ -30,7 +30,6 @@ import { ProbeRequestResponse } from '../../interfaces/request'
 import { Probe } from '../../interfaces/probe'
 import { Notification } from '../../interfaces/notification'
 import { log } from '../../utils/pino'
-import { getConfig } from '../config'
 const sqlite3 = SQLite3.verbose()
 const dbPath = path.resolve(process.cwd(), 'monika-logs.db')
 
@@ -474,10 +473,7 @@ export async function getSummary(): Promise<any> {
     0
   )
 
-  const config = getConfig()
-
   return {
-    numberOfProbes: config.probes.length,
     numberOfIncidents,
     numberOfRecoveries,
     numberOfSentNotifications,
